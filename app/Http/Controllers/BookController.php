@@ -26,6 +26,8 @@ class BookController extends Controller
             'title' => 'required|string|min:3|max:200',
             'Author' => 'required|string|min:3|max:200',
             'status' => 'required|in:0,1',
+            'categroy' => 'required|string|min:3',
+            'photo' => 'required|image|mimes:png,jpg,jpeg'
 
         ]);
         if($validator->fails()) {
@@ -39,7 +41,8 @@ class BookController extends Controller
             'title' => $request->title,
             'Author' => $request->Author,
             'status' => $request->status,
-
+            'categroy' => $request->categroy,
+            'photo' => $request->file('photo')->store('books')
         ]);
 
         if($book) {

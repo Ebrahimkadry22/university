@@ -12,5 +12,7 @@ class Book extends Model
         'title',
         'Author',
         'status',
+        'categroy',
+        'photo'
     ];
 }

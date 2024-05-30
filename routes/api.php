@@ -6,6 +6,7 @@ use App\Http\Controllers\MetaphorController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfessorsController;
 use App\Http\Controllers\RecordingMterialsController;
+use App\Http\Controllers\SearchBookController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeachingCourseController;
 use App\Http\Controllers\UniversityCityController;
@@ -82,6 +83,10 @@ Route::controller(BookController::class)->middleware('checkRole')->prefix('book'
 Route::controller(BookController::class)->prefix('book')->group(function () {
     Route::get('/all', 'allBook');
 });
+Route::controller(SearchBookController::class)->prefix('search')->group(function () {
+    Route::get('/book', 'index');
+});
+
 
 Route::controller(MetaphorController::class)->middleware('auth:student')->prefix('metaphor')->group(function () {
     Route::post('/book', 'metaphorBook');
